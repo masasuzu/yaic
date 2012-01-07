@@ -17,7 +17,7 @@ class Web < Sinatra::Base
       redirect '/login'
     end
 
-    client = GmailClient.new
+    client = GmailClient.new(session["address"], session["password"])
     @mails = client.list_new_mail
     erb :index
   end

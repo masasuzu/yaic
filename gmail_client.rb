@@ -1,18 +1,10 @@
 # coding: utf-8
 require 'net/imap'
 require 'kconv'
-require 'pit'
 require 'pp'
 
 class GmailClient
-  def initialize
-    config = Pit.get(
-      'yagc',
-      :requre => {
-        'address' => 'your gmail address',
-        'pass'    => 'your gmail password'
-      }
-    );
+  def initialize(address, password)
 
     @imap = Net::IMAP.new(
       'imap.gmail.com',
@@ -22,7 +14,7 @@ class GmailClient
       }
     )
 
-    @imap.login(config['address'], config['pass'])
+    @imap.login(address, password)
     @imap.select('INBOX')
   end
 
