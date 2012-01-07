@@ -14,8 +14,6 @@ class GmailClient
       if mail.multipart?
         mail.parts.each do |part|
           body = part.decoded.toutf8 if /^text\/plain;/ =~ part.content_type
-          pp part.content_type
-          pp part.body
         end
       else
         body = mail.body.decoded.toutf8
