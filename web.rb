@@ -33,10 +33,6 @@ class Web < Sinatra::Base
   end
 
   get '/todo' do
-    session["count"] ||= 0
-    session["count"] += 1
-    puts session["count"]
-
     @todo = [
       'css',
       'おーとぺーじゃー',
